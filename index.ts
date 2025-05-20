@@ -1,6 +1,7 @@
 import express from 'express';
 import dotenv from 'dotenv';
 import router from './src/router';
+import logger from './src/utils/logger';
 
 dotenv.config();
 
@@ -12,5 +13,5 @@ import { pool } from './src/db';
 
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {
-  console.log(`Server running on port ${PORT}`);
+  logger.info(`Server running on port ${PORT}`);
 });

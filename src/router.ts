@@ -5,8 +5,10 @@ import { authenticateToken } from './auth/auth.service';
 
 const router = Router();
 
-router.get('/', (_, res) => {
+router.get('/', (req, res) => {
+  console.log('GET /');
   res.send('Welcome to the ToDoList API!');
+  return;
 });
 
 router.post('/register', users.register);

@@ -2,7 +2,6 @@ import { Request, Response } from 'express';
 import service from "./tasks.service"
 
 async function getTasks(req: Request, res: Response) {
-    console.log('GET /tasks', { userId: (req as any).user.userId });
     const userId = (req as any).user.userId;
     try {
         const tasks = await service.getTasks(userId);
@@ -15,7 +14,6 @@ async function getTasks(req: Request, res: Response) {
 }
 
 async function addTask(req: Request, res: Response) {
-    console.log('POST /tasks', { userId: (req as any).user.userId, body: req.body });
     const userId = (req as any).user.userId;
     const { title } = req.body;
     if (!title) {
@@ -33,7 +31,6 @@ async function addTask(req: Request, res: Response) {
 }
 
 async function updareTask(req: Request, res: Response) {
-    console.log('PUT /tasks/:id', { userId: (req as any).user.userId, params: req.params, body: req.body });
     const userId = (req as any).user.userId;
     const { id } = req.params;
     const { title, completed } = req.body;
@@ -48,7 +45,6 @@ async function updareTask(req: Request, res: Response) {
 }
 
 async function deleteTask(req: Request, res: Response) {
-    console.log('DELETE /tasks/:id', { userId: (req as any).user.userId, params: req.params });
     const userId = (req as any).user.userId;
     const { id } = req.params;
     try {

@@ -6,7 +6,6 @@ import logger from "../utils/logger";
 
 // Register new user
 const register = async (req: Request, res: Response) => {
-    logger.info('POST /register', req.body);
     const { email, password } = req.body as User;
     if (!email || !password) {
         res.status(400).json({ error: 'Email and password required' });
@@ -23,6 +22,7 @@ const register = async (req: Request, res: Response) => {
             return;
         }
     } catch (err) {
+        logger.error('Database error', err);
         res.status(500).json({ error: 'Database error' });
         return;
     }
@@ -30,7 +30,6 @@ const register = async (req: Request, res: Response) => {
 
 // Login user
 const login = async (req: Request, res: Response) => {
-    logger.info('POST /login', req.body);
     const { email, password } = req.body;
     if (!email || !password) {
         res.status(400).json({ error: 'Email and password required' });
@@ -47,6 +46,7 @@ const login = async (req: Request, res: Response) => {
             return;
         }
     } catch (err) {
+        logger.error('Database error', err);
         res.status(500).json({ error: 'Database error' });
         return;
     }

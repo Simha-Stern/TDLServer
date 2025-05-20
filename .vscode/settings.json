@@ -1,0 +1,9 @@
+{
+  // a grean color palette
+  "workbench.colorCustomizations": {
+    "statusBar.background": "#00FF00",
+    "statusBar.foreground": "#000000",
+    "statusBarItem.hoverBackground": "#00FF00",
+    "statusBarItem.hoverForeground": "#000000",
+  }
+}

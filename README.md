@@ -35,13 +35,14 @@ Authorization: Bearer <token>
   ```json
   {
     "email": "user@example.com",
-    "password": "yourpassword"
+    "password": "yourpassword",
+    "name": "John Doe"
   }
   ```
 - **Responses:**
   - `201 Created` – Registration successful
     ```json
-    { "message": "User registered successfully" }
+    { "token": "JWT_TOKEN_HERE", "name": "John Doe" }
     ```
   - `409 Conflict` – Email already exists
     ```json
@@ -68,7 +69,7 @@ Authorization: Bearer <token>
 - **Responses:**
   - `200 OK` – Login successful
     ```json
-    { "token": "JWT_TOKEN_HERE" }
+    { "token": "JWT_TOKEN_HERE", "name": "John Doe" }
     ```
   - `401 Unauthorized` – Invalid credentials
     ```json

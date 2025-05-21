@@ -6,19 +6,19 @@ import logger from "../utils/logger";
 
 // Register new user
 const register = async (req: Request, res: Response) => {
-    const { email, password } = req.body as User;
+    const { email, password, name } = req.body as User;
     if (!email || !password) {
         res.status(400).json({ error: 'Email and password required' });
         return;
     }
 
     try {
-        const result = await service.register(email, password);
+        const result = await service.register(email, password, name);
         if (result.status === 409) {
             res.status(409).json({ error: result.error });
             return;
         } else if (result.status === 201) {
-            res.status(201).json({ message: result.message });
+            res.status(201).json({ token: result.token, name: result.name });
             return;
         }
     } catch (err) {
@@ -42,7 +42,7 @@ const login = async (req: Request, res: Response) => {
             res.status(401).json({ error: result.error });
             return;
         } else if (result.status === 200) {
-            res.status(200).json({ token: result.token });
+            res.status(200).json({ token: result.token, name: result.name });
             return;
         }
     } catch (err) {

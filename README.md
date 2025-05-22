@@ -2,6 +2,22 @@
 
 A RESTful API for user authentication and task management.
 
+## Environment Variables
+
+Create a `.env` file in the project root with the following variables:
+
+```
+CLIENT_URL=
+PORT=
+JWT_SECRET=
+DB_HOST=
+DB_USER=
+DB_PASSWORD=
+DB_NAME=
+```
+
+Fill in the values as appropriate for your environment.
+
 ## Authentication
 
 Some endpoints require a JWT token in the `Authorization` header:
